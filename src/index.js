@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   // your code here
-  let form = document.forms[0]
-  let text = form.querySelector("#new-task-description")
-  let priority = form.querySelector("#priority")
+  const form = document.forms[0]
+  const text = form.querySelector("#new-task-description")
+  const priority = form.querySelector("#priority")
+  const due = form.querySelector("#due-date")
 
-  form.addEventListener("submit",(event) =>{
+  form.addEventListener("submit", updateToDo)
 
+  function updateToDo(event){
     event.preventDefault()
 
     let ul = document.querySelector("#tasks")
@@ -18,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //set text content value for the button and list element
 
-    li.textContent = text.value
+    li.textContent = `Task:${text.value} | Due:${due.value}`
     deleteBtn.textContent = "X"
 
     //set color based on priority
@@ -27,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       li.style.color = "red"
     }
     else if(chosenColor==="yellow"){
-      li.style.color = "yellow"
+      li.style.color = "#fcba03"
     }
     else{
       li.style.color = "green"
@@ -43,7 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //set input field to empty after submit
     form.reset()
-  })
+
+  }
 
   function deleteTask(e){
     e.target.parentNode.remove()
