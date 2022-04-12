@@ -13,7 +13,11 @@ body {
 button {
   font-size: 7px;
 }
-
+input ,select{
+  padding: 5px;
+  border: solid 1px black;
+  border-radius: 5px;
+}
 #main-content {
   position: relative;
   display: flex;
